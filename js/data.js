@@ -10,6 +10,6 @@ var data = {
 window.addEventListener('beforeunload', handleBeforeunload);
 
 function handleBeforeunload(event) {
-  var $data = JSON.stringify(data);
-  localStorage.setItem('code-journal-local-storage', $data);
+  var dataJSON = JSON.stringify(data);
+  localStorage.setItem('code-journal-local-storage', dataJSON);
 }

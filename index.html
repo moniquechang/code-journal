@@ -31,7 +31,7 @@
     <div data-view="entry-form" class="container">
       <form class="row">
         <h1 class="column-full">New Entry</h1>
-        <div class="column-full column-half display-image">
+        <div class="column-half display-image">
           <img src="images/placeholder-image-square.jpg" alt="placeholder for journal entry image">
         </div>
         <div class="column-half">
@@ -40,8 +40,10 @@
           <label for="url" class="column-full">Photo Url</label>
           <input type="url" id="url" name="photo-url" class="column-full" required="required">
         </div>
-        <label for="notes" class="column-full">Notes</label>
-        <textarea id="notes" name="notes" class="column-full" required="required"></textarea>
+        <div class="column-full">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" required="required"></textarea>
+        </div>
         <div class="column-full display-button">
           <input type="submit" value="SAVE" class="button">
         </div>
