@@ -27,7 +27,6 @@ function handleSubmit(event) {
 
 $form.addEventListener('submit', handleSubmit);
 
-/*
 function renderEntry(entry) {
   var $list = document.createElement('li');
   $list.setAttribute('class', 'column-full');
@@ -62,5 +61,13 @@ function renderEntry(entry) {
 
   return $list;
 }
-*/
-// had to comment out function to commit!
+
+var $ul = document.querySelector('ul');
+
+function handleDOMContentLoaded(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    $ul.appendChild(renderEntry(data.entries[i]));
+  }
+}
+
+document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
