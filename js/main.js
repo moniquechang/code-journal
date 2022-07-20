@@ -26,3 +26,41 @@ function handleSubmit(event) {
 }
 
 $form.addEventListener('submit', handleSubmit);
+
+/*
+function renderEntry(entry) {
+  var $list = document.createElement('li');
+  $list.setAttribute('class', 'column-full');
+
+  var rowDiv = document.createElement('div');
+  rowDiv.setAttribute('class', 'row');
+  $list.appendChild(rowDiv);
+
+  var imageDiv = document.createElement('div');
+  imageDiv.setAttribute('class', 'column-half display-image');
+  rowDiv.appendChild(imageDiv);
+
+  var $image = document.createElement('img');
+  $image.setAttribute('src', entry.url);
+  imageDiv.appendChild($image);
+
+  var columnHalfDiv = document.createElement('div');
+  columnHalfDiv.setAttribute('class', 'column-half');
+  rowDiv.appendChild(columnHalfDiv);
+
+  var $h2 = document.createElement('h2');
+  $h2.setAttribute('class', 'column-full');
+  var title = document.createTextNode(entry.title);
+  $h2.appendChild(title);
+  columnHalfDiv.appendChild($h2);
+
+  var $p = document.createElement('p');
+  $p.setAttribute('class', 'column-full entries-text');
+  var notes = document.createTextNode(entry.notes);
+  $p.appendChild(notes);
+  columnHalfDiv.appendChild($p);
+
+  return $list;
+}
+*/
+// had to comment out function to commit!
