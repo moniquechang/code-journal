@@ -71,3 +71,23 @@ function handleDOMContentLoaded(event) {
 }
 
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+
+var $view = document.querySelectorAll('.view');
+function checkView(string) {
+  for (var i = 0; i < $view.length; i++) {
+    if (string.target.getAttribute('data-view') === $view[i].getAttribute('data-view')) {
+      $view[i].className = 'view container';
+    } else {
+      $view[i].className = 'view container hidden';
+    }
+  }
+}
+
+function handleClick(event) {
+  if (event.target.matches('a') === false) {
+    return;
+  }
+  checkView(event);
+}
+
+document.addEventListener('click', handleClick);

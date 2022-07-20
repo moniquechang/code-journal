@@ -23,13 +23,13 @@
       <div class="row">
         <div class="column-full">
           <p>Code Journal</p>
-          <p class="nav-entries"><a href="#">Entries</a></p>
+          <p class="nav-entries"><a href="#" data-view="entries">Entries</a></p>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="container">
+    <div data-view="entry-form" class="view container">
       <form class="row">
         <h1 class="column-full">New Entry</h1>
         <div class="column-half display-image">
@@ -50,11 +50,11 @@
         </div>
       </form>
     </div>
-    <div data-view="entries" class="container">
+    <div data-view="entries" class="view container hidden">
       <div class="row">
         <div class="column-full display-entries">
           <h1>Entries</h1>
-          <a href="#" class="entries-anchor-button">NEW</a>
+          <a href="#" class="entries-anchor-button" data-view="entry-form">NEW</a>
         </div>
       </div>
       <ul class="row display-list">
