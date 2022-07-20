@@ -23,6 +23,7 @@
       <div class="row">
         <div class="column-full">
           <p>Code Journal</p>
+          <p class="nav-entries"><a href="#">Entries</a></p>
         </div>
       </div>
     </div>
@@ -44,12 +45,18 @@
           <label for="notes">Notes</label>
           <textarea id="notes" name="notes" required="required"></textarea>
         </div>
-        <div class="column-full display-button">
+        <div class="column-full form-button">
           <input type="submit" value="SAVE" class="button">
         </div>
       </form>
     </div>
     <div data-view="entries" class="container">
+      <div class="row">
+        <div class="column-full display-entries">
+          <h1>Entries</h1>
+          <a href="#" class="entries-anchor-button">NEW</a>
+        </div>
+      </div>
       <ul class="row display-list">
       </ul>
     </div>
