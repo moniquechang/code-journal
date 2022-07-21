@@ -50,11 +50,18 @@ function renderEntry(entry) {
   columnHalfDiv.setAttribute('class', 'column-half');
   rowDiv.appendChild(columnHalfDiv);
 
+  var entryHeaderDiv = document.createElement('div');
+  entryHeaderDiv.setAttribute('class', 'column-full display-entries entry-header');
+  columnHalfDiv.appendChild(entryHeaderDiv);
+
   var $h2 = document.createElement('h2');
-  $h2.setAttribute('class', 'column-full');
   var title = document.createTextNode(entry.title);
   $h2.appendChild(title);
-  columnHalfDiv.appendChild($h2);
+  entryHeaderDiv.appendChild($h2);
+
+  var $i = document.createElement('i');
+  $i.setAttribute('class', 'fa-solid fa-pen');
+  entryHeaderDiv.appendChild($i);
 
   var $p = document.createElement('p');
   $p.setAttribute('class', 'column-full entries-text');

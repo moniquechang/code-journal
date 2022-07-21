@@ -104,6 +104,11 @@ h2 {
   align-items: center;
 }
 
+i {
+  font-size: 1.5rem;
+  color: #562b81;
+}
+
 .entries-text {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
@@ -141,5 +146,9 @@ h2 {
 
   .display-button {
     padding: 0;
+  }
+
+  div.entry-header {
+    padding: 0 0.75rem;
   }
 }
