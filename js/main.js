@@ -33,6 +33,7 @@ $form.addEventListener('submit', handleSubmit);
 function renderEntry(entry) {
   var $list = document.createElement('li');
   $list.setAttribute('class', 'column-full');
+  $list.setAttribute('data-entry-id', entry.entryId);
 
   var rowDiv = document.createElement('div');
   rowDiv.setAttribute('class', 'row');
