@@ -66,28 +66,27 @@ function renderEntry(entry) {
 }
 
 var $ul = document.querySelector('ul');
+var noEntriesDiv = document.querySelector('.no-entries');
 
 function handleDOMContentLoaded(event) {
   for (var i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
 
-  if (data.view === 'entry-form') {
-    switchView('entry-form');
-  } else if (data.view === 'entries') {
-    switchView('entries');
+  if (data.entries.length === 0) {
+    noEntriesDiv.className = 'column-full no-entries';
+  } else {
+    noEntriesDiv.className = 'column-full no-entries hidden';
   }
 
+  if (data.view === 'entry-form') {
+    switchView(data.view);
+  } else if (data.view === 'entries') {
+    switchView(data.view);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
-
-var noEntriesDiv = document.querySelector('.no-entries');
-if (data.entries.length === 0) {
-  noEntriesDiv.className = 'column-full no-entries';
-} else {
-  noEntriesDiv.className = 'column-full no-entries hidden';
-}
 
 var $view = document.querySelectorAll('.view');
 function switchView(viewName) {
