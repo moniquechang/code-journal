@@ -23,6 +23,8 @@ function handleSubmit(event) {
   data.nextEntryId += 1;
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+  switchView('entries');
+  $ul.prepend(renderEntry(data.entries[0]));
 }
 
 $form.addEventListener('submit', handleSubmit);
@@ -80,9 +82,9 @@ if (data.entries.length === 0) {
 }
 
 var $view = document.querySelectorAll('.view');
-function checkView(string) {
+function switchView(viewName) {
   for (var i = 0; i < $view.length; i++) {
-    if (string.target.getAttribute('data-view') === $view[i].getAttribute('data-view')) {
+    if (viewName === $view[i].getAttribute('data-view')) {
       $view[i].className = 'view container';
     } else {
       $view[i].className = 'view container hidden';
@@ -94,7 +96,7 @@ function handleClick(event) {
   if (event.target.matches('a') === false) {
     return;
   }
-  checkView(event);
+  switchView(event.target.getAttribute('data-view'));
 }
 
 document.addEventListener('click', handleClick);
