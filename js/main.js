@@ -118,13 +118,20 @@ function handleClickEditIcon(event) {
   if (event.target.matches('i') === false) {
     return;
   }
+
   switchView('entry-form');
+
   for (var k = 0; k < data.entries.length; k++) {
     var parsedDataEntryId = parseInt(event.target.getAttribute('data-entry-id'));
     if (parsedDataEntryId === data.entries[k].entryId) {
       data.editing = data.entries[k];
     }
   }
+
+  $titleInput.value = data.editing.title;
+  $notesTextarea.value = data.editing.notes;
+  $urlInput.value = data.editing.url;
+  $img.setAttribute('src', data.editing.url);
 }
 
 $ul.addEventListener('click', handleClickEditIcon);
