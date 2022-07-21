@@ -62,6 +62,7 @@ function renderEntry(entry) {
 
   var $i = document.createElement('i');
   $i.setAttribute('class', 'fa-solid fa-pen');
+  $i.setAttribute('data-entry-id', entry.entryId);
   entryHeaderDiv.appendChild($i);
 
   var $p = document.createElement('p');
@@ -112,3 +113,18 @@ function handleClick(event) {
 }
 
 document.addEventListener('click', handleClick);
+
+function handleClickEditIcon(event) {
+  if (event.target.matches('i') === false) {
+    return;
+  }
+  switchView('entry-form');
+  for (var k = 0; k < data.entries.length; k++) {
+    var parsedDataEntryId = parseInt(event.target.getAttribute('data-entry-id'));
+    if (parsedDataEntryId === data.entries[k].entryId) {
+      data.editing = data.entries[k];
+    }
+  }
+}
+
+$ul.addEventListener('click', handleClickEditIcon);
