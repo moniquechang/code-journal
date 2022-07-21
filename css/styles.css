@@ -7,6 +7,18 @@ p {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
   font-size: 1.2rem;
+  display: inline-block;
+}
+
+.nav-entries {
+  margin-left: 1.2rem;
+  font-size: 1rem;
+}
+
+a:link,
+a:visited {
+  color: white;
+  text-decoration: none;
 }
 
 body {
@@ -14,6 +26,7 @@ body {
 }
 
 h1,
+h2,
 label {
   font-family: "Proza Libre", sans-serif;
   font-weight: 600;
@@ -21,7 +34,7 @@ label {
 
 .display-image {
   max-height: 250px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 img {
@@ -32,7 +45,8 @@ img {
 }
 
 input,
-textarea {
+textarea,
+.entries-anchor-button {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   border: 1px solid #b6b6b6;
@@ -51,25 +65,55 @@ textarea {
   height: 9rem;
 }
 
-input:focus {
-  outline-color: #562b81;
-}
-
+input:focus,
 textarea:focus {
   outline-color: #562b81;
 }
 
-.display-button {
+.form-button {
   display: flex;
   justify-content: end;
 }
 
-.button {
+.button,
+.entries-anchor-button {
   color: white;
   background-color: #562b81;
   font-size: 1.1rem;
-  padding: 0.3rem 1.2rem;
+  padding: 0.3rem 1.1rem;
   margin: 0;
+}
+
+.display-list {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 1rem 0;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.display-entries {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entries-text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: black;
+  margin: 0;
+}
+
+.no-entries {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -85,7 +129,8 @@ textarea:focus {
     padding: 0;
   }
 
-  input {
+  input,
+  .entries-anchor-button {
     line-height: 2rem;
   }
 
