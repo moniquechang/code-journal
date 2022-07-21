@@ -72,6 +72,13 @@ function handleDOMContentLoaded(event) {
 
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
 
+var noEntriesDiv = document.querySelector('.no-entries');
+if (data.entries.length === 0) {
+  noEntriesDiv.className = 'column-full no-entries';
+} else {
+  noEntriesDiv.className = 'column-full no-entries hidden';
+}
+
 var $view = document.querySelectorAll('.view');
 function checkView(string) {
   for (var i = 0; i < $view.length; i++) {
