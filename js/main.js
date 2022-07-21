@@ -79,11 +79,7 @@ function handleDOMContentLoaded(event) {
     noEntriesDiv.className = 'column-full no-entries hidden';
   }
 
-  if (data.view === 'entry-form') {
-    switchView(data.view);
-  } else if (data.view === 'entries') {
-    switchView(data.view);
-  }
+  switchView(data.view);
 }
 
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
