@@ -25,6 +25,7 @@ function handleSubmit(event) {
   $form.reset();
   switchView('entries');
   $ul.prepend(renderEntry(data.entries[0]));
+  noEntriesDiv.className = 'column-full no-entries hidden';
 }
 
 $form.addEventListener('submit', handleSubmit);
@@ -70,6 +71,13 @@ function handleDOMContentLoaded(event) {
   for (var i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
+
+  if (data.view === 'entry-form') {
+    switchView('entry-form');
+  } else if (data.view === 'entries') {
+    switchView('entries');
+  }
+
 }
 
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
@@ -86,6 +94,7 @@ function switchView(viewName) {
   for (var i = 0; i < $view.length; i++) {
     if (viewName === $view[i].getAttribute('data-view')) {
       $view[i].className = 'view container';
+      data.view = viewName;
     } else {
       $view[i].className = 'view container hidden';
     }
