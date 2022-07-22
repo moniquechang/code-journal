@@ -35,10 +35,16 @@ function handleSubmit(event) {
     for (var u = 0; u < data.entries.length; u++) {
       if (data.entries[u].entryId === inputObj.entryId) {
         data.entries.splice(u, 1, inputObj);
+        //  var editedEntryDOMTree = renderEntry(data.entries[u]);
       }
-    //  var DOMtree = renderEntry(data.entries[u]);
+      /*
+   var $listNodeList = document.querySelectorAll('li');
+  for (var m = 0; m < $listNodeList.length; m++) {
+    if (parseInt($listNodeList[m].getAttribute('data-entry-id')) === inputObj.entryId) {
+      $listNodeList[m].replaceWith(editedEntryLi);
     }
-    // console.log(DOMtree);
+  } */
+    }
     data.editing = null;
   }
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
@@ -47,7 +53,7 @@ function handleSubmit(event) {
 }
 
 // var $listNodeList = document.querySelectorAll('li');
-/* var $listNodeList = DOMtree.querySelectorAll('li');
+/*
 for (var m = 0; m < $listNodeList.length; m++) {
   if (parseInt($listNodeList[m].getAttribute('data-entry-id')) === inputObj.entryId) {
     $listNodeList[m].replaceWith(editedEntryLi);
