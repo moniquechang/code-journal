@@ -36,7 +36,9 @@ function handleSubmit(event) {
       if (data.entries[u].entryId === inputObj.entryId) {
         data.entries.splice(u, 1, inputObj);
       }
+    //  var DOMtree = renderEntry(data.entries[u]);
     }
+    // console.log(DOMtree);
     data.editing = null;
   }
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
@@ -45,6 +47,12 @@ function handleSubmit(event) {
 }
 
 // var $listNodeList = document.querySelectorAll('li');
+/* var $listNodeList = DOMtree.querySelectorAll('li');
+for (var m = 0; m < $listNodeList.length; m++) {
+  if (parseInt($listNodeList[m].getAttribute('data-entry-id')) === inputObj.entryId) {
+    $listNodeList[m].replaceWith(editedEntryLi);
+  }
+} */
 
 $form.addEventListener('submit', handleSubmit);
 
