@@ -13,20 +13,38 @@ var $form = document.querySelector('form');
 
 function handleSubmit(event) {
   event.preventDefault();
-  var inputObj = {
-    title: $titleInput.value,
-    url: $urlInput.value,
-    notes: $notesTextarea.value,
-    entryId: data.nextEntryId
-  };
-  data.entries.unshift(inputObj);
-  data.nextEntryId += 1;
+
+  if (data.editing === null) {
+    var inputObj = {
+      title: $titleInput.value,
+      url: $urlInput.value,
+      notes: $notesTextarea.value,
+      entryId: data.nextEntryId
+    };
+    data.entries.unshift(inputObj);
+    $ul.prepend(renderEntry(data.entries[0]));
+    data.nextEntryId += 1;
+    noEntriesDiv.className = 'column-full no-entries hidden';
+  } else if (data.editing !== null) {
+    inputObj = {
+      title: $titleInput.value,
+      url: $urlInput.value,
+      notes: $notesTextarea.value,
+      entryId: data.editing.entryId
+    };
+    for (var u = 0; u < data.entries.length; u++) {
+      if (data.entries[u].entryId === inputObj.entryId) {
+        data.entries.splice(u, 1, inputObj);
+      }
+    }
+    data.editing = null;
+  }
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
   switchView('entries');
-  $ul.prepend(renderEntry(data.entries[0]));
-  noEntriesDiv.className = 'column-full no-entries hidden';
 }
+
+// var $listNodeList = document.querySelectorAll('li');
 
 $form.addEventListener('submit', handleSubmit);
 
@@ -114,6 +132,7 @@ function handleClick(event) {
 
 document.addEventListener('click', handleClick);
 
+var $h1ForNewEntry = document.querySelector('form > h1');
 function handleClickEditIcon(event) {
   if (event.target.matches('i') === false) {
     return;
@@ -128,6 +147,7 @@ function handleClickEditIcon(event) {
     }
   }
 
+  $h1ForNewEntry.textContent = 'Edit Entry';
   $titleInput.value = data.editing.title;
   $notesTextarea.value = data.editing.notes;
   $urlInput.value = data.editing.url;
