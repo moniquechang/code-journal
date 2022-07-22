@@ -51,14 +51,6 @@ function handleSubmit(event) {
   switchView('entries');
 }
 
-// var $listNodeList = document.querySelectorAll('li');
-/*
-for (var m = 0; m < $listNodeList.length; m++) {
-  if (parseInt($listNodeList[m].getAttribute('data-entry-id')) === inputObj.entryId) {
-    $listNodeList[m].replaceWith(editedEntryLi);
-  }
-} */
-
 $form.addEventListener('submit', handleSubmit);
 
 function renderEntry(entry) {
@@ -168,3 +160,10 @@ function handleClickEditIcon(event) {
 }
 
 $ul.addEventListener('click', handleClickEditIcon);
+
+var $newAnchorButton = document.querySelector('.entries-anchor-button');
+function newAnchorButtonHandleClick(event) {
+  $h1ForNewEntry.textContent = 'New Entry';
+}
+
+$newAnchorButton.addEventListener('click', newAnchorButtonHandleClick);
