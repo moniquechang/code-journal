@@ -138,6 +138,7 @@ function handleClick(event) {
 document.addEventListener('click', handleClick);
 
 var $h1ForNewEntry = document.querySelector('form > h1');
+
 function handleClickEditIcon(event) {
   if (event.target.matches('i') === false) {
     return;
@@ -164,6 +165,8 @@ $ul.addEventListener('click', handleClickEditIcon);
 var $newAnchorButton = document.querySelector('.entries-anchor-button');
 function newAnchorButtonHandleClick(event) {
   $h1ForNewEntry.textContent = 'New Entry';
+  $form.reset();
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 }
 
 $newAnchorButton.addEventListener('click', newAnchorButtonHandleClick);
