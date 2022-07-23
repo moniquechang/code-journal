@@ -138,6 +138,8 @@ function handleClick(event) {
 document.addEventListener('click', handleClick);
 
 var $h1ForNewEntry = document.querySelector('form > h1');
+var $formsDiv = document.querySelector('.form-buttons');
+var $deleteButton = document.querySelector('.delete-button');
 
 function handleClickEditIcon(event) {
   if (event.target.matches('i') === false) {
@@ -146,6 +148,10 @@ function handleClickEditIcon(event) {
 
   switchView('entry-form');
 
+  $h1ForNewEntry.textContent = 'Edit Entry';
+  $formsDiv.className = 'column-full form-buttons form-buttons-on-edit';
+  $deleteButton.className = 'delete-button';
+
   for (var k = 0; k < data.entries.length; k++) {
     var parsedDataEntryId = parseInt(event.target.getAttribute('data-entry-id'));
     if (parsedDataEntryId === data.entries[k].entryId) {
@@ -153,7 +159,6 @@ function handleClickEditIcon(event) {
     }
   }
 
-  $h1ForNewEntry.textContent = 'Edit Entry';
   $titleInput.value = data.editing.title;
   $notesTextarea.value = data.editing.notes;
   $urlInput.value = data.editing.url;
@@ -167,6 +172,8 @@ function newAnchorButtonHandleClick(event) {
   $h1ForNewEntry.textContent = 'New Entry';
   $form.reset();
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $formsDiv.className = 'column-full form-buttons form-buttons-no-edit';
+  $deleteButton.className = 'delete-button hidden';
 }
 
 $newAnchorButton.addEventListener('click', newAnchorButtonHandleClick);

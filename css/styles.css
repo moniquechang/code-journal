@@ -70,12 +70,17 @@ textarea:focus {
   outline-color: #562b81;
 }
 
-.form-button {
+.form-buttons-on-edit {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-buttons-no-edit {
   display: flex;
   justify-content: end;
 }
 
-.button,
+.save-button,
 .entries-anchor-button {
   color: white;
   background-color: #562b81;
@@ -121,6 +126,14 @@ i {
   margin-top: 2rem;
 }
 
+.delete-button {
+  border-style: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: #dc2626;
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 768px) {
   div.column-full {
     padding: 0;
@@ -142,10 +155,6 @@ i {
   .display-image {
     padding: 0;
     max-height: 300px;
-  }
-
-  .display-button {
-    padding: 0;
   }
 
   div.entry-header {
