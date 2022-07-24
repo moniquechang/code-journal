@@ -128,14 +128,14 @@ function switchView(viewName) {
   }
 }
 
-function handleClick(event) {
+function handleClickSwitchView(event) {
   if (event.target.matches('a') === false) {
     return;
   }
   switchView(event.target.getAttribute('data-view'));
 }
 
-document.addEventListener('click', handleClick);
+document.addEventListener('click', handleClickSwitchView);
 
 var $h1ForNewEntry = document.querySelector('form > h1');
 var $formsDiv = document.querySelector('.form-buttons');
@@ -168,7 +168,8 @@ function handleClickEditIcon(event) {
 $ul.addEventListener('click', handleClickEditIcon);
 
 var $newAnchorButton = document.querySelector('.entries-anchor-button');
-function newAnchorButtonHandleClick(event) {
+
+function handleClickNewAnchorButton(event) {
   $h1ForNewEntry.textContent = 'New Entry';
   $form.reset();
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
@@ -176,4 +177,13 @@ function newAnchorButtonHandleClick(event) {
   $deleteButton.className = 'delete-button hidden';
 }
 
-$newAnchorButton.addEventListener('click', newAnchorButtonHandleClick);
+$newAnchorButton.addEventListener('click', handleClickNewAnchorButton);
+
+var $modalBackground = document.querySelector('.modal-background');
+
+function handleClickModal(event) {
+  event.preventDefault();
+  $modalBackground.className = 'modal-background';
+}
+
+$deleteButton.addEventListener('click', handleClickModal);
