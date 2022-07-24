@@ -204,9 +204,21 @@ function handleClickDeleteEntry(event) {
       data.entries.splice(g, 1);
     }
   }
+
+  var $listNodeList = document.querySelectorAll('li');
+  for (var m = 0; m < $listNodeList.length; m++) {
+    if (parseInt($listNodeList[m].getAttribute('data-entry-id')) === data.editing.entryId) {
+      $ul.removeChild($listNodeList[m]);
+    }
+  }
   data.editing = null;
   $modalBackground.className = 'modal-background hidden';
   switchView('entries');
+
+  if (data.entries.length === 0) {
+    noEntriesDiv.className = 'column-full no-entries';
+    data.nextEntryId = 1;
+  }
 }
 
 $confirmButton.addEventListener('click', handleClickDeleteEntry);
