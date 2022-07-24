@@ -180,10 +180,18 @@ function handleClickNewAnchorButton(event) {
 $newAnchorButton.addEventListener('click', handleClickNewAnchorButton);
 
 var $modalBackground = document.querySelector('.modal-background');
+var $cancelButton = document.querySelector('.cancel-button');
 
 function handleClickModal(event) {
   event.preventDefault();
-  $modalBackground.className = 'modal-background';
+  if (event.target.matches('.delete-button')) {
+    $modalBackground.className = 'modal-background';
+  }
+
+  if (event.target.matches('.cancel-button')) {
+    $modalBackground.className = 'modal-background hidden';
+  }
 }
 
 $deleteButton.addEventListener('click', handleClickModal);
+$cancelButton.addEventListener('click', handleClickModal);
