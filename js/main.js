@@ -195,3 +195,18 @@ function handleClickModal(event) {
 
 $deleteButton.addEventListener('click', handleClickModal);
 $cancelButton.addEventListener('click', handleClickModal);
+
+var $confirmButton = document.querySelector('.confirm-button');
+
+function handleClickDeleteEntry(event) {
+  for (var g = 0; g < data.entries.length; g++) {
+    if (data.entries[g].entryId === data.editing.entryId) {
+      data.entries.splice(g, 1);
+    }
+  }
+  data.editing = null;
+  $modalBackground.className = 'modal-background hidden';
+  switchView('entries');
+}
+
+$confirmButton.addEventListener('click', handleClickDeleteEntry);
