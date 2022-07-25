@@ -128,22 +128,29 @@ function switchView(viewName) {
   }
 }
 
-function handleClick(event) {
+function handleClickSwitchView(event) {
   if (event.target.matches('a') === false) {
     return;
   }
   switchView(event.target.getAttribute('data-view'));
 }
 
-document.addEventListener('click', handleClick);
+document.addEventListener('click', handleClickSwitchView);
 
 var $h1ForNewEntry = document.querySelector('form > h1');
+var $formsDiv = document.querySelector('.form-buttons');
+var $deleteButton = document.querySelector('.delete-button');
+
 function handleClickEditIcon(event) {
   if (event.target.matches('i') === false) {
     return;
   }
 
   switchView('entry-form');
+
+  $h1ForNewEntry.textContent = 'Edit Entry';
+  $formsDiv.className = 'column-full form-buttons form-buttons-on-edit';
+  $deleteButton.className = 'delete-button';
 
   for (var k = 0; k < data.entries.length; k++) {
     var parsedDataEntryId = parseInt(event.target.getAttribute('data-entry-id'));
@@ -152,7 +159,6 @@ function handleClickEditIcon(event) {
     }
   }
 
-  $h1ForNewEntry.textContent = 'Edit Entry';
   $titleInput.value = data.editing.title;
   $notesTextarea.value = data.editing.notes;
   $urlInput.value = data.editing.url;
@@ -162,8 +168,55 @@ function handleClickEditIcon(event) {
 $ul.addEventListener('click', handleClickEditIcon);
 
 var $newAnchorButton = document.querySelector('.entries-anchor-button');
-function newAnchorButtonHandleClick(event) {
+
+function handleClickNewAnchorButton(event) {
   $h1ForNewEntry.textContent = 'New Entry';
+  $form.reset();
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $formsDiv.className = 'column-full form-buttons form-buttons-no-edit';
+  $deleteButton.className = 'delete-button hidden';
 }
 
-$newAnchorButton.addEventListener('click', newAnchorButtonHandleClick);
+$newAnchorButton.addEventListener('click', handleClickNewAnchorButton);
+
+var $modalBackground = document.querySelector('.modal-background');
+var $cancelButton = document.querySelector('.cancel-button');
+
+function handleClickModal(event) {
+  event.preventDefault();
+  if (event.target.matches('.delete-button')) {
+    $modalBackground.className = 'modal-background';
+  }
+
+  if (event.target.matches('.cancel-button')) {
+    $modalBackground.className = 'modal-background hidden';
+  }
+}
+
+$deleteButton.addEventListener('click', handleClickModal);
+$cancelButton.addEventListener('click', handleClickModal);
+
+var $confirmButton = document.querySelector('.confirm-button');
+
+function handleClickDeleteEntry(event) {
+  for (var g = 0; g < data.entries.length; g++) {
+    if (data.entries[g].entryId === data.editing.entryId) {
+      data.entries.splice(g, 1);
+    }
+  }
+  var $listNodeList = document.querySelectorAll('li');
+  for (var m = 0; m < $listNodeList.length; m++) {
+    if (parseInt($listNodeList[m].getAttribute('data-entry-id')) === data.editing.entryId) {
+      $ul.removeChild($listNodeList[m]);
+    }
+  }
+  data.editing = null;
+  $modalBackground.className = 'modal-background hidden';
+  switchView('entries');
+
+  if (data.entries.length === 0) {
+    noEntriesDiv.className = 'column-full no-entries';
+  }
+}
+
+$confirmButton.addEventListener('click', handleClickDeleteEntry);
