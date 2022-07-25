@@ -216,7 +216,6 @@ function handleClickDeleteEntry(event) {
 
   if (data.entries.length === 0) {
     noEntriesDiv.className = 'column-full no-entries';
-    data.nextEntryId = 1;
   }
 }
 
